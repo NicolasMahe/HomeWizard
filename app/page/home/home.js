@@ -1,0 +1,1 @@
+angular.module('page_home', ['element_layout', 'element_control']);

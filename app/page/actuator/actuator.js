@@ -1,0 +1,1 @@
+angular.module('page_actuator', ['element_layout', 'element_control']);

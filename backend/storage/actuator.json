@@ -1,0 +1,66 @@
+{
+    "nextId": 17,
+    "data": [
+        {
+            "name": "Relais",
+            "id": 1,
+            "url": "http:\/\/192.168.1.200\/",
+            "key": "38ME9Q6dvWF83UYY",
+            "action": [
+                {
+                    "id": 1,
+                    "name": "Allumer 1",
+                    "duration": 0,
+                    "status": "Allumé",
+                    "active": {
+                        "1": true,
+                        "2": true,
+                        "3": true,
+                        "4": true,
+                        "5": true,
+                        "6": true
+                    },
+                    "deactive": {
+                        "2": false,
+                        "4": false
+                    },
+                    "color": "warning"
+                },
+                {
+                    "id": 2,
+                    "name": "Eteindre 1",
+                    "duration": 0,
+                    "status": "Eteint",
+                    "deactive": {
+                        "1": true,
+                        "2": true,
+                        "3": true,
+                        "4": true,
+                        "5": true,
+                        "6": true
+                    },
+                    "color": "success"
+                },
+                {
+                    "id": 3,
+                    "duration": 1000,
+                    "name": "Power",
+                    "active": {
+                        "1": true,
+                        "2": true,
+                        "3": true,
+                        "4": true,
+                        "5": true,
+                        "6": true
+                    },
+                    "status": "On",
+                    "color": "success"
+                }
+            ],
+            "_lastActuated": "2014-11-03T20:08:11Z",
+            "_status": "Allumé",
+            "_relativeDate": "dans une heure",
+            "_color": "warning"
+        }
+    ]
+}

@@ -1,0 +1,121 @@
+<!-- Modal -->
+<div class="modal fade" id="element-modal-control" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                <h4 ng-if="!actuator.id" class="modal-title" id="myModalLabel">Ajouter un actionneur</h4>
+                <h4 ng-if="actuator.id" class="modal-title" id="myModalLabel">Editer un actionneur</h4>
+            </div>
+            <form role="form">
+                <div class="modal-body">
+                    <fieldset>
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" id="name" class="form-control" placeholder="Nom" ng-model="actuator.name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="url">Url</label>
+                            <input type="text" id="url" class="form-control" placeholder="Url" ng-model="actuator.url" />
+                        </div>
+                        <div class="form-group">
+                            <label for="key">Clé</label>
+                            <input type="text" id="key" class="form-control" placeholder="Clé" ng-model="actuator.key" />
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <h4>
+                            Actions 
+                            <button type="button" class="btn btn-primary btn-sm" style="margin-left: 20px;" ng-click="addAction()">Ajouter une action</button>
+                        </h4>
+                        <div class="row small-padding border-bottom" ng-repeat="action in actuator.action">
+                            <div class="form-group col-xs-12 col-sm-3">
+                                <label for="name-{{$index}}">Nom</label>
+                                <input type="text" id="name-{{$index}}" class="form-control" placeholder="Nom" ng-model="action.name" />
+                            </div>
+                            <div class="form-group col-xs-12 col-sm-3">
+                                <label for="status-{{$index}}">Statut</label>
+                                <input type="text" id="status-{{$index}}" class="form-control" placeholder="Statut" ng-model="action.status" />
+                            </div>
+                            <div class="form-group col-xs-6 col-sm-2">
+                                <label for="duration-{{$index}}">Durée</label>
+                                <input type="number" id="duration-{{$index}}" class="form-control" placeholder="Durée" ng-model="action.duration" />
+                            </div>
+                            <div class="form-group col-xs-6 col-sm-2">
+                                <label for="color-{{$index}}">Couleur</label>
+                                <select id="color-{{$index}}" class="form-control" ng-model="action.color">
+                                    <option value="success">Vert</option>
+                                    <option value="warning">Orange</option>
+                                    <option value="danger">Rouge</option>
+                                    <option value="primary">Bleu</option>
+                                    <option value="info">Bleu ciel</option>
+                                    <option value="default">Blanc</option>
+                                </select>
+                            </div>
+                            <div class="visible-xs-block form-group col-xs-12">
+                                <label>Activer les relais :</label><br/>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[1]"> 1</label>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[2]"> 2</label>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[3]"> 3</label>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[4]"> 4</label>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[5]"> 5</label>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[6]"> 6</label>
+                            </div>
+                            <div class="visible-xs-block form-group col-xs-12">
+                                <label>Désactiver les relais :</label><br/>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[1]"> 1</label>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[2]"> 2</label>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[3]"> 3</label>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[4]"> 4</label>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[5]"> 5</label>
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[6]"> 6</label>
+                            </div>
+                            <!--<div class="visible-xs-block form-group col-xs-12">
+                                <label>Apparaître dans plus :</label>
+                                <label class="radio-inline" style="margin-left: 10px;"><input type="radio" ng-model="action.inShowMore" value="true"> oui</label>
+                                <label class="radio-inline"><input type="radio" ng-model="action.inShowMore" value="false"> non</label>
+                            </div>-->
+                            <div class="form-group col-xs-12 col-sm-2">
+                                <button type="button" class="btn btn-danger btn-block" ng-click="removeAction(action)">Supprimer</button>
+                            </div>
+                            <div class="hidden-xs form-group col-sm-12 row">
+                                <label class="col-sm-4">Activer les relais :</label>
+                                <span class="col-sm-8">
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[1]"> 1</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[2]"> 2</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[3]"> 3</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[4]"> 4</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[5]"> 5</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.active[6]"> 6</label>
+                                </span>
+                            </div>
+                            <div class="hidden-xs form-group col-sm-12 row">
+                                <label class="col-sm-4">Désactiver les relais :</label>
+                                <span class="col-sm-8">
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[1]"> 1</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[2]"> 2</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[3]"> 3</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[4]"> 4</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[5]"> 5</label>
+                                    <label class="checkbox-inline"><input type="checkbox" ng-model="action.deactive[6]"> 6</label>
+                                </span>
+                            </div>
+                            <!--<div class="hidden-xs form-group col-sm-12 row">
+                                <label class="col-sm-4">Apparaître dans plus :</label>
+                                <span class="col-sm-8">
+                                    <label class="radio-inline"><input type="radio" ng-model="action.inShowMore" value="true"> oui</label>
+                                    <label class="radio-inline"><input type="radio" ng-model="action.inShowMore" value="false"> non</label>
+                                </span>
+                            </div>-->
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="modal-footer">
+                    <button ng-if="actuator.id" type="button" class="btn btn-danger pull-left" ng-click="delete()">Supprimer</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                    <input type="submit" class="btn btn-primary" ng-click="save()" value="Enregistrer">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

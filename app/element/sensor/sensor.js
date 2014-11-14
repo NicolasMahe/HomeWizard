@@ -1,0 +1,1 @@
+angular.module('element_sensor', ['webservice_sensor', 'webservice_sensorStats']);

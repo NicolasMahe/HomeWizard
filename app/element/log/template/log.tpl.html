@@ -1,0 +1,40 @@
+<div>
+    
+    <div class="page-header">
+        <div class="pull-right loading" style="line-height: 48px;">
+            <span ng-if="loading>0">Chargement</span>
+            <span style="vertical-align: middle; cursor: pointer;"
+                  ng-click="getLog()"
+                  class="glyphicon glyphicon-refresh"
+                  ng-class="{'no-animation': loading==0}"
+                  ></span>
+        </div>
+        <h1>Log <button type="button" class="btn btn-default btn-xs" style="margin-left: 10px" ng-click="reset()">Réinitialiser</button></h1>
+    </div>
+
+    <div ng-if="logArray" class="table-responsive">
+        <table ng-if="logArray" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th class="text-center">Méthode</th>
+                    <th class="text-center">Action</th>
+                    <th class="text-center">Statut</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="log in logArray" ><!--ng-class="{danger: log.status=='error', success: log.status=='success', info: log.status=='match'}"-->
+                    <td style="white-space: nowrap; vertical-align: middle;">{{log.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <td class="text-center" style="white-space: nowrap; vertical-align: middle;">{{log.method}}</td>
+                    <td class="text-center" style="white-space: nowrap; vertical-align: middle;">{{log.action}}</td>
+                    <td class="text-center" style="white-space: nowrap; vertical-align: middle;" ng-class="{'text-danger': log.status=='error', 'text-success': log.status=='success', 'text-info': log.status=='match'}">{{log.status}}</td>
+                    <td style="vertical-align: middle;">{{log.message}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

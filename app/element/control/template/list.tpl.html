@@ -1,0 +1,67 @@
+<div id="element-control-control">
+    <div class="row">
+        <div class="col-xs-7">
+            <h1 style="margin-top: 0px">Actionneur 
+                <button type="button" class="hidden-xs btn btn-primary" style="vertical-align: bottom;" ng-click="openAddActuator()">Ajouter</button>
+            </h1>
+        </div>
+        <div class="col-xs-5 loading text-right">
+            <span class="hidden-xs" ng-if="loading>0">Chargement</span>
+            <span class="visible-xs-inline-block" ng-if="loading>0">Charg.</span>
+            <span style="vertical-align: middle; cursor: pointer; font-size: 28px;"
+                  ng-click="getActuatorList()"
+                  class="glyphicon glyphicon-refresh"
+                  ng-class="{'no-animation': loading==0}"
+                  ></span>
+        </div>
+    </div>
+    
+    <div class="row">
+        <!--
+        <div class="wrapper" directive-responsive-show-only="screen-xs">
+            <div class="col-xs-6" ng-class="{'slideLeft': showRight}">
+                <div class="list-group" ng-click="showRight=true">
+                    <a href="#" class="list-group-item">Alarm <span class="badge label-success">On</span></a>
+                    <a href="#" class="list-group-item">Alarm <span class="badge label-success">On</span></a>
+                </div>
+            </div>
+            <div class="col-xs-6 detail">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a ng-click="showRight=false"><span class="glyphicon glyphicon-chevron-left"></span> Back</a>
+                        
+                        <element-control-control-directive ng-if="showRight"></element-control-control-directive>
+                    </div>
+                </div>
+            </div>
+        </div>
+        -->
+        <div class="wrapper"> <!--directive-responsive-show-not="screen-xs"-->
+            <div class="col-xs-6" ng-class="{'slideLeft': showRight}">
+                <div class="list-group" ng-click="showRight=true">
+                    <a class="list-group-item" 
+                       ng-repeat="actuator in actuatorArray" 
+                       ng-click="setCurrentActuator(actuator)" 
+                       ng-class="{'active': (!isScreenXs && actuator.id == actuatorCurrent.id)}"
+                    >
+                        {{ actuator.name }}
+                        <span class="badge label-{{actuator._color}}">{{ actuator._status }}</span>
+                    </a>
+                </div>
+                <button type="button" class="visible-xs-inline-block btn btn-primary" style="vertical-align: bottom;" ng-click="openAddActuator()">Ajouter</button>
+            </div>
+            <div class="col-xs-6 detail">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <a class="visible-xs-block" ng-click="showRight=false" style="margin-bottom: 10px; display: block;"><span class="glyphicon glyphicon-chevron-left"></span> Retour</a>
+                        
+                        <element-control-control-directive actuator="actuatorCurrent"></element-control-control-directive>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <element-modal-control-directive actuator="actuatorToEdit"></element-modal-control-directive>
+    
+</div>

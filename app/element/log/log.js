@@ -1,0 +1,1 @@
+angular.module('element_log', ['webservice_log']);

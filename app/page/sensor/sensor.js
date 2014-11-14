@@ -1,0 +1,1 @@
+angular.module('page_sensor', ['element_layout', 'element_sensor']);

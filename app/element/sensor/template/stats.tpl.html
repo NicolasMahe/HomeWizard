@@ -1,0 +1,21 @@
+<div id="element-control-control">
+    <div class="row">
+        <div class="col-xs-7">
+            <h1 style="margin-top: 0px">Sensors
+                <small>Live: {{sensorLiveStats}}W</small>
+            </h1>
+        </div>
+        <div class="col-xs-5 loading text-right">
+            <span class="hidden-xs" ng-if="loading>0">Chargement</span>
+            <span class="visible-xs-inline-block" ng-if="loading>0">Charg.</span>
+            <span style="vertical-align: middle; cursor: pointer; font-size: 28px;"
+                  ng-click="getLiveStats()"
+                  class="glyphicon glyphicon-refresh"
+                  ng-class="{'no-animation': loading==0}"
+                  ></span>
+        </div>
+    </div>
+    
+    <div id="graphSensorStats" style="width:100%; height:400px;"></div>
+    
+</div>

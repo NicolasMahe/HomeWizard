@@ -1,0 +1,5 @@
+{
+    "storagePath": "/var/www/HomeWizard/backend/storage/",
+    "storagePathLog": "storage/logs.json",
+    "controllerPath": "controller"
+}

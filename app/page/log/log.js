@@ -1,0 +1,1 @@
+angular.module('page_log', ['element_log', 'element_layout']);

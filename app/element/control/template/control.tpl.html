@@ -1,0 +1,29 @@
+<div>
+    <h3>{{actuator.name}} 
+        <span class="label label-{{actuator._color}}">{{actuator._status}}</span>
+        <small> <br class="visible-xs-inline-block" />{{actuator._relativeDate}}</small>
+    </h3>
+
+    <button type="button" 
+            ng-repeat="action in actuator.action" 
+            ng-click="actuate(action)" 
+            class="btn btn-{{action.color}}"
+    >{{action.name}}</button>
+    
+    <!--<button ng-hide="showMore" ng-click="showMore=!showMore" type="button" class="btn btn-link btn-sm">More actions</button>
+    <span ng-show="showMore">
+        <button type="button" 
+            ng-repeat="action in actuator.action" 
+            ng-click="actuate(action)" 
+            class="btn btn-{{action.color}}"
+            ng-if="action.inShowMore == 'true'"
+        >{{action.name}}</button>
+    </span>-->
+    
+    <p>
+        <strong>Statut :</strong> {{actuator._status}}<br/>
+        <strong>Dernière activation :</strong> <span ng-if="actuator._lastActuated">{{actuator._lastActuated | date:'medium'}}</span><span ng-if="!actuator._lastActuated">-</span>
+    </p>
+    
+    <button type="button" ng-click="openEditActuator(actuator)" class="btn btn-default btn-xs">Editer</button>
+</div>

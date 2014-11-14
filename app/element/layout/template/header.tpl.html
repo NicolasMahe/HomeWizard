@@ -1,0 +1,21 @@
+<!-- Static navbar -->
+<div class="navbar navbar-default navbar-static-top" role="navigation" ng-controller="element_layout_HeaderController">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Home Wizard</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li ng-class="{active: checkFirstPath('/actuator')}"><a href="/#/actuator">Actionneur</a></li>
+        <li ng-class="{active: checkFirstPath('/sensor')}"><a href="/#/sensor">Sensors</a></li>
+        <li ng-class="{active: checkFirstPath('/log')}"><a href="/#/log">Log</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container-fluid -->
+</div>

@@ -44,7 +44,7 @@ class Actuator
                 Log::add("Actuator", "Activate", "success", "Actuator '".$data['name']."' action '".$action['name']."' successfully activated");
                 
                 //update
-                $data['_lastActuated'] = date("Y-m-d\TH:i:s\Z");
+                $data['_lastActuated'] = Date::isoString();
                 $data['_status'] = $action['status'];
                 $data['_color'] = $action['color'];
                 $actuator->update($data);
